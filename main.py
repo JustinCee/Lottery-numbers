@@ -1,7 +1,7 @@
 from tkinter import *
 from PIL import ImageTk, Image
 import datetime
-import messagebox
+from tkinter import messagebox
 
 window = Tk()
 window.title("Lotto Login")
@@ -13,14 +13,25 @@ canvas.place(x=90, y=20)
 img = ImageTk.PhotoImage(Image.open('17-Lottery1.jpg'))
 canvas.create_image(20, 20, anchor=NW, image=img)
 
-def age_calculation(self):
-    date_time = datetime.today()
-    try:
-        for x in range(int(self.name_entry.get())):
-            age = int(self.id_entry.get()[0:3]) - int(date_time.strftime("%y"))
-            if age >=18:
-                messagebox.showinfo
 
+def age_calculation(self):
+    date_time = datetime.datetime
+    try:
+        for x in range(int(self.id_entry.get())):
+            age = int(self.id_entry.get()[0:3]) - int(date_time.strftime("%y"))
+            if age >= 18:
+                messagebox.showinfo('Status', "You are Old enough to Play Lotto!!")
+                break
+            elif len(self.id_entry.get()) < 18:
+                messagebox.showerror('Error', 'Not a valid ID Number')
+            elif len(self.id_entry.get()) > 18:
+                messagebox.showerror('Error', 'This is not a valid ID Number')
+            else:
+                messagebox.showerror('Error', 'You are too young to play Lotto')
+                break
+    except ValueError:
+        if self.id_entry.get() != int:
+            messagebox.showerror('Error', 'The ID number must be an integer')
 
 
 label1 = Label(window, text="Ithuba National Lottery", font=("Comic Sans MS", 20), bg='Yellow')
@@ -52,7 +63,7 @@ identity.place(x=10, y=200)
 identity_entry = Entry(frame)
 identity_entry.place(x=200, y=200)
 
-submit = Button(frame, text='Enter', bg='yellow', width=20)
+submit = Button(frame, text='Enter', bg='yellow', width=20, command=age_calculation)
 submit.place(x=305, y=350)
 
 
