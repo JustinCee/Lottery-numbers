@@ -1,6 +1,6 @@
 from tkinter import *
 from PIL import ImageTk, Image
-import datetime
+from datetime import *
 from tkinter import messagebox
 
 window = Tk()
@@ -15,16 +15,18 @@ canvas.create_image(20, 20, anchor=NW, image=img)
 
 
 def age_calculation(self):
-    date_time = datetime.datetime
+    date_time = datetime.today
     try:
         for x in range(int(self.id_entry.get())):
             age = int(self.id_entry.get()[0:3]) - int(date_time.strftime("%y"))
             if age >= 18:
                 messagebox.showinfo('Status', "You are Old enough to Play Lotto!!")
+                import main2
+                window.destroy()
                 break
-            elif len(self.id_entry.get()) < 18:
+            elif len(self.id_entry.get()) < 13:
                 messagebox.showerror('Error', 'Not a valid ID Number')
-            elif len(self.id_entry.get()) > 18:
+            elif len(self.id_entry.get()) > 13:
                 messagebox.showerror('Error', 'This is not a valid ID Number')
             else:
                 messagebox.showerror('Error', 'You are too young to play Lotto')
