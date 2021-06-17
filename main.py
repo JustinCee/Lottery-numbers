@@ -14,26 +14,29 @@ img = ImageTk.PhotoImage(Image.open('17-Lottery1.jpg'))
 canvas.create_image(20, 20, anchor=NW, image=img)
 
 
-def age_calculation(self):
-    date_time = datetime.today
-    try:
-        for x in range(int(self.id_entry.get())):
-            age = int(self.id_entry.get()[0:3]) - int(date_time.strftime("%y"))
-            if age >= 18:
-                messagebox.showinfo('Status', "You are Old enough to Play Lotto!!")
-                import main2
-                window.destroy()
-                break
-            elif len(self.id_entry.get()) < 13:
-                messagebox.showerror('Error', 'Not a valid ID Number')
-            elif len(self.id_entry.get()) > 13:
-                messagebox.showerror('Error', 'This is not a valid ID Number')
-            else:
-                messagebox.showerror('Error', 'You are too young to play Lotto')
-                break
-    except ValueError:
-        if self.id_entry.get() != int:
-            messagebox.showerror('Error', 'The ID number must be an integer')
+def age_calculation():
+    player_id = identity_entry.get()
+    year = player_id[:2]
+
+    if year >= '22':
+        year = '19' + year
+    else:
+        year = '20' + year
+    month = player_id[2:4]
+    day = player_id[4:6]
+    today = date.today()
+
+    age = today.year - int(year) - ((today.month, today.year) < (int(month), int(day)))
+
+    if len(player_id) != 13:
+        messagebox.showerror('Error', 'Please enter a valid ID Number')
+    elif age >= 18:
+        messagebox.showinfo('Welcome', 'Lets test your luck')
+        window.destroy()
+        import main2
+    else:
+        age = 18 - age
+        messagebox.showerror("Error", 'No my child you are too young to play this game')
 
 
 label1 = Label(window, text="Ithuba National Lottery", font=("Comic Sans MS", 20), bg='Yellow')
