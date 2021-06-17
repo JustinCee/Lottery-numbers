@@ -17,6 +17,17 @@ canvas.create_image(20, 20, anchor=NW, image=img)
 top_label = Label(window, text='Do you feel Lucky?', font=("Comic Sans MS", 20), bg='yellow')
 top_label.place(x=150, y=5)
 
+
+def play_again():
+    first_list.clear()
+    second_list.clear()
+    third_list.clear()
+    lotto_list.clear()
+
+
+play_twice = Button(window, text='Try Your Luck Again', bg='powder blue', command=play_again)
+play_twice.place(x=100, y=700)
+
 first_list = []
 second_list = []
 third_list = []
@@ -148,28 +159,34 @@ def lotto_draw():
         j = set(user_inputs).intersection(lotto_list)
 
         if len(j) == 0:
-            results.config(text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
-                                str(lotto_list) + "\n" + 'You do not win anything')
+            results.config(
+                text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
+                     str(lotto_list) + "\n" + 'You do not win anything')
 
         elif len(j) == 1:
             results.config(
                 text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
                      str(lotto_list) + "\n" + 'You do not win anything')
         elif len(j) == 2:
-            results.config(text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
-                                str(lotto_list) + "\n" + 'You win a R20')
+            results.config(
+                text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
+                     str(lotto_list) + "\n" + 'You win a R20')
         elif len(j) == 3:
-            results.config(text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
-                                str(lotto_list) + "\n" + 'You win a R150.50')
+            results.config(
+                text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
+                     str(lotto_list) + "\n" + 'You win a R100.50')
         elif len(j) == 4:
-            results.config(text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
-                                str(lotto_list) + "\n" + 'You win a R2384')
+            results.config(
+                text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
+                     str(lotto_list) + "\n" + 'You win a R2384')
         elif len(j) == 5:
-            results.config(text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
-                                str(lotto_list) + "\n" + 'You win a R8584')
+            results.config(
+                text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
+                     str(lotto_list) + "\n" + 'You win a R8584')
         elif len(j) == 6:
-            results.config(text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
-                                str(lotto_list) + "\n" + 'You win a R10 000 000')
+            results.config(
+                text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
+                     str(lotto_list) + "\n" + 'You win a R10 000 000')
         else:
             results.config(text='You won nothing, you can exit the program now')
     finally:
