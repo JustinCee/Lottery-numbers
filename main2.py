@@ -1,9 +1,12 @@
+from itertools import chain
+from random import sample
 from tkinter import *
+
 from PIL import ImageTk, Image
 
 window = Tk()
 window.title('Lets Play')
-window.geometry('500x800')
+window.geometry('500x1000')
 window.config(bg='yellow')
 
 canvas = Canvas(window, width=400, height=200, bg="Yellow", borderwidth=0, highlightthickness=0)
@@ -132,6 +135,47 @@ number48.place(x=440, y=500)
 number49 = Button(window, width=2, text=49, command=lambda: button_display(49))
 number49.place(x=20, y=540)
 
+results = Label(window, bg='yellow', text="Your Results will be Shown here")
+results.place(x=50, y=800)
+
+lotto_list = sample(range(50), 6)
+
+
+def lotto_draw():
+    try:
+        user_inputs = list(chain(first_list, second_list, third_list))
+
+        j = set(user_inputs).intersection(lotto_list)
+
+        if len(j) == 0:
+            results.config(text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
+                                str(lotto_list) + "\n" + 'You do not win anything')
+
+        elif len(j) == 1:
+            results.config(
+                text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
+                     str(lotto_list) + "\n" + 'You do not win anything')
+        elif len(j) == 2:
+            results.config(text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
+                                str(lotto_list) + "\n" + 'You win a R20')
+        elif len(j) == 3:
+            results.config(text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
+                                str(lotto_list) + "\n" + 'You win a R150.50')
+        elif len(j) == 4:
+            results.config(text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
+                                str(lotto_list) + "\n" + 'You win a R2384')
+        elif len(j) == 5:
+            results.config(text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
+                                str(lotto_list) + "\n" + 'You win a R8584')
+        elif len(j) == 6:
+            results.config(text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
+                                str(lotto_list) + "\n" + 'You win a R10 000 000')
+        else:
+            results.config(text='You won nothing, you can exit the program now')
+    finally:
+        return 'nothing'
+
+
 first_set = Label(window, text=' ', bg='yellow', width=30, borderwidth=3, relief='sunken')
 first_set.place(x=130, y=600)
 second_set = Label(window, text=' ', bg='yellow', width=30, borderwidth=3, relief='sunken')
@@ -139,12 +183,18 @@ second_set.place(x=130, y=630)
 third_set = Label(window, text=' ', bg='yellow', width=30, borderwidth=3, relief='sunken')
 third_set.place(x=130, y=660)
 
+play_lotto = Button(window, text='Play Lotto', command=lotto_draw, bg='green')
+play_lotto.place(x=20, y=700)
+
+claim_prize = Button(window, text='Claim Prize', bg='light green')
+claim_prize.place(x=385, y=700)
+
 
 def exit_program():
     window.destroy()
 
 
 exiting = Button(window, text='Exit', bg='red', command=exit_program)
-exiting.place(x=440, y=760)
+exiting.place(x=440, y=965)
 
 window.mainloop()
