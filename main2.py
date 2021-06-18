@@ -26,7 +26,7 @@ def play_again():
 
 
 play_twice = Button(window, text='Try Your Luck Again', bg='powder blue', command=play_again)
-play_twice.place(x=100, y=700)
+play_twice.place(x=170, y=700)
 
 first_list = []
 second_list = []
@@ -202,6 +202,12 @@ third_set.place(x=130, y=660)
 
 play_lotto = Button(window, text='Play Lotto', command=lotto_draw, bg='green')
 play_lotto.place(x=20, y=700)
+
+
+def claiming():
+    window.destroy()
+    import main3
+
 
 claim_prize = Button(window, text='Claim Prize', bg='light green')
 claim_prize.place(x=385, y=700)
