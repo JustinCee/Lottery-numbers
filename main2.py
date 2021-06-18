@@ -209,7 +209,7 @@ def claiming():
     import main3
 
 
-claim_prize = Button(window, text='Claim Prize', bg='light green')
+claim_prize = Button(window, text='Claim Prize', bg='light green', command=claiming)
 claim_prize.place(x=385, y=700)
 
 
