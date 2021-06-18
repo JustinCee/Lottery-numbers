@@ -33,7 +33,7 @@ bank_option = Label(window, text='Please select your bank:', bg='yellow')
 bank_option.place(x=5, y=210)
 
 amount = IntVar()
-response = requests.get('https://v6.exchangerate-api.com/v6/cf719f6bfba5177bc04a822b/latest/ZAR')
+response = requests.get('https://v6.exchangerate-api.com/v6/cf719f6bfba5177bc04a822b/latest/USD')
 response_j = response.json()
 
 conv_rates = response_j['conversion_rates']
