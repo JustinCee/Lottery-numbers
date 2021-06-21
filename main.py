@@ -2,6 +2,7 @@ from tkinter import *
 from PIL import ImageTk, Image
 from datetime import *
 from tkinter import messagebox
+from playsound import playsound
 
 window = Tk()
 window.title("Lotto Login")
@@ -36,8 +37,10 @@ def age_calculation():
             name_entry.get() + '     ' + email_entry.get() + '     ' + address_entry.get() + '     ' + identity_entry.get())
         j.close()
         messagebox.showinfo('Welcome', 'Lets test your luck')
+        playsound("125408379.mp3")
         window.destroy()
         import main2
+
     else:
         age = 18 - age
         messagebox.showerror("Error", 'No my child you are too young to play this game')
@@ -88,6 +91,7 @@ clear.place(x=5, y=350)
 
 
 def exit_program():
+    playsound('87637918.mp3')
     window.destroy()
 
 

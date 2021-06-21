@@ -4,10 +4,11 @@ from tkinter.ttk import Combobox
 from tkinter import messagebox
 
 import requests
+from playsound import playsound
 
 window = Tk()
 window.title('Claim Prize')
-window.geometry('500x500')
+window.geometry('500x600')
 window.config(bg='yellow')
 
 top_label = Label(window, text='Please enter your details below:', bg='yellow', font=("Comic Sans MS", 20))
@@ -33,7 +34,7 @@ bank_option = Label(window, text='Please select your bank:', bg='yellow')
 bank_option.place(x=5, y=210)
 
 amount = IntVar()
-response = requests.get('https://v6.exchangerate-api.com/v6/cf719f6bfba5177bc04a822b/latest/USD')
+response = requests.get('https://v6.exchangerate-api.com/v6/8c633d337bbc46fc80ef7fa7/latest/ZAR')
 response_j = response.json()
 
 conv_rates = response_j['conversion_rates']
@@ -65,5 +66,14 @@ convert_result.place(x=5, y=420)
 
 convert_zar = Button(window, text='Convert amount', command=currency_convert)
 convert_zar.place(x=300, y=360)
+
+
+def exit_program():
+    playsound('87637918.mp3')
+    window.destroy()
+
+
+exit_btn = Button(window, text='exit', bg='red', command=exit_program)
+exit_btn.place(x=440, y=560)
 
 window.mainloop()

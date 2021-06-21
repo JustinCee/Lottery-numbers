@@ -1,6 +1,7 @@
 from itertools import chain
 from random import sample
 from tkinter import *
+from playsound import playsound
 
 from PIL import ImageTk, Image
 
@@ -8,6 +9,7 @@ window = Tk()
 window.title('Lets Play')
 window.geometry('500x1000')
 window.config(bg='yellow')
+
 
 canvas = Canvas(window, width=400, height=200, bg="Yellow", borderwidth=0, highlightthickness=0)
 canvas.place(x=115, y=10)
@@ -37,6 +39,7 @@ third_list = []
 
 
 def button_display(num):
+    playsound('beep-08b.mp3')
     if len(first_list) < 6:
         first_list.append(num)
         first_set.config(text=first_list)
@@ -156,6 +159,7 @@ lotto_list = sample(range(50), 6)
 
 
 def lotto_draw():
+    playsound('147239759.mp3')
     try:
         user_inputs = list(chain(first_list, second_list, third_list))
 
@@ -193,6 +197,9 @@ def lotto_draw():
 
         else:
             results.config(text='You won nothing, you can exit the program now')
+        j = open("verify.txt", "a+")
+        j.write(results.cget("text") + "\n")
+        j.close()
 
     finally:
         return 'nothing'
@@ -219,6 +226,7 @@ claim_prize.place(x=385, y=700)
 
 
 def exit_program():
+    playsound('87637918.mp3')
     window.destroy()
 
 
