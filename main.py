@@ -31,6 +31,10 @@ def age_calculation():
     if len(player_id) != 13:
         messagebox.showerror('Error', 'Please enter a valid ID Number')
     elif age >= 18:
+        j = open("verify.txt", "a+")
+        j.write(
+            name_entry.get() + '     ' + email_entry.get() + '     ' + address_entry.get() + '     ' + identity_entry.get())
+        j.close()
         messagebox.showinfo('Welcome', 'Lets test your luck')
         window.destroy()
         import main2

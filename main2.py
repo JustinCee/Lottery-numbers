@@ -19,10 +19,13 @@ top_label.place(x=150, y=5)
 
 
 def play_again():
-    first_list.clear()
-    second_list.clear()
-    third_list.clear()
-    lotto_list.clear()
+    first_set.config(text='')
+    second_set.config(text='')
+    third_set.config(text='')
+    results.config(text='')
+    del first_list[:]
+    del second_list[:]
+    del third_list[:]
 
 
 play_twice = Button(window, text='Try Your Luck Again', bg='powder blue', command=play_again)
@@ -187,8 +190,10 @@ def lotto_draw():
             results.config(
                 text='Your Numbers chosen were: ' + '\n' + str(user_inputs) + '\n' + 'The winning numbers are: ' +
                      str(lotto_list) + "\n" + 'You win a R10 000 000')
+
         else:
             results.config(text='You won nothing, you can exit the program now')
+
     finally:
         return 'nothing'
 
