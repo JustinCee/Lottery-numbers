@@ -1,3 +1,4 @@
+# below is all the modules imported for the second screen
 from itertools import chain
 from random import sample
 from tkinter import *
@@ -5,21 +6,23 @@ from playsound import playsound
 
 from PIL import ImageTk, Image
 
+# below is the configuration for the tkinter window
 window = Tk()
 window.title('Lets Play')
 window.geometry('500x1000')
 window.config(bg='yellow')
 
-
+# below is the configuration of the image needed
 canvas = Canvas(window, width=400, height=200, bg="Yellow", borderwidth=0, highlightthickness=0)
 canvas.place(x=115, y=10)
 img = ImageTk.PhotoImage(Image.open('download.png'))
 canvas.create_image(20, 20, anchor=NW, image=img)
-
+# below is the top label of the window
 top_label = Label(window, text='Do you feel Lucky?', font=("Comic Sans MS", 20), bg='yellow')
 top_label.place(x=150, y=5)
 
 
+# below is the function if you need to clear everything to play again
 def play_again():
     first_set.config(text='')
     second_set.config(text='')
@@ -30,14 +33,16 @@ def play_again():
     del third_list[:]
 
 
+# below is the play again button where the play_again function is being used
 play_twice = Button(window, text='Try Your Luck Again', bg='powder blue', command=play_again)
 play_twice.place(x=170, y=700)
-
+# below is empty lists needed for my lotto function
 first_list = []
 second_list = []
 third_list = []
 
 
+# below is the function for all my buttons so the data can display
 def button_display(num):
     playsound('beep-08b.mp3')
     if len(first_list) < 6:
@@ -51,6 +56,7 @@ def button_display(num):
         third_set.config(text=third_list)
 
 
+# below is ALL 49 buttons needed to draw lotto numbers
 number_label = Label(window, text='Please select your numbers Below: ', font=("Comic Sans MS", 20), bg='yellow')
 number_label.place(x=90, y=250)
 number1 = Button(window, width=2, text=1, command=lambda: button_display(1))
@@ -151,13 +157,14 @@ number48 = Button(window, width=2, text=48, command=lambda: button_display(48))
 number48.place(x=440, y=500)
 number49 = Button(window, width=2, text=49, command=lambda: button_display(49))
 number49.place(x=20, y=540)
-
+# below is the label to display the results of the game
 results = Label(window, bg='yellow', text="Your Results will be Shown here")
 results.place(x=50, y=800)
-
+# below is the range of numbers drawn from the random module imported
 lotto_list = sample(range(50), 6)
 
 
+# below is the function to compare the numbers you picked and the random lotto numbers drawn
 def lotto_draw():
     playsound('147239759.mp3')
     try:
@@ -205,31 +212,36 @@ def lotto_draw():
         return 'nothing'
 
 
+# Below is where the sets are displaying that you pick from the buttons
 first_set = Label(window, text=' ', bg='yellow', width=30, borderwidth=3, relief='sunken')
 first_set.place(x=130, y=600)
 second_set = Label(window, text=' ', bg='yellow', width=30, borderwidth=3, relief='sunken')
 second_set.place(x=130, y=630)
 third_set = Label(window, text=' ', bg='yellow', width=30, borderwidth=3, relief='sunken')
 third_set.place(x=130, y=660)
-
+# below is the play lotto
 play_lotto = Button(window, text='Play Lotto', command=lotto_draw, bg='green')
 play_lotto.place(x=20, y=700)
 
 
+# below is the function to take you to the next screen to claim your prize
 def claiming():
     window.destroy()
     import main3
 
 
+# below is the claim prize button
 claim_prize = Button(window, text='Claim Prize', bg='light green', command=claiming)
 claim_prize.place(x=385, y=700)
 
 
+# below is the exiting function
 def exit_program():
     playsound('87637918.mp3')
     window.destroy()
 
 
+# below is the exiting button
 exiting = Button(window, text='Exit', bg='red', command=exit_program)
 exiting.place(x=440, y=965)
 
